@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body style="
+    margin-bottom: 80px;
+">
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        
+        <div style="
+            
+                margin-top: 150px;
+                margin-bottom: 10px;
+                width: 100%;
+                
+                ">
+
+          <!-- Title -->
+          <h1 class="mt-4"><img src="<%= asset_path 'bed' %>" width="55" height="40"><%= @info.title %></h1>
+     
+          <!-- Preview Image -->
+          <div style="text-align: center;">
+          <img src=<%= @info.img %> alt="와동 생태곤충 체험관 사진1" style="width: 600px;height: 400px;" class="item" />
+          </div>
+
+    
+          
+			   <div style="
+    				float: left;
+    				padding-top: 15px;
+    				padding-bottom: 15px;">
+          <b style="font-size: 20px;"> 소개</b>
+          <!--<p class="lead"><%= @info.content.gsub(/<\/?[^>]+>/, '') %></p>-->
+           <hr style="border: solid 0.8px #3a434c;">
+          <p><%= @info.content.gsub(/<\/?[^>]+>/, '') %></p>
+          </div>
+
+          <blockquote class="blockquote">
+            <p class="mb-0"><figcaption>
+				  <ul>
+					<li>
+						<b>위치</b>
+						<% if @info.addr.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.addr %></span>
+						<% end %>
+					</li>
+					<li>
+						<b>문의/안내</b>
+						<% if @info.phone.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.phone %></span>
+						<% end %>
+					</li>
+					<li>
+						<b>주차시설</b>
+						<% if @info.parking.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.parking %></span>
+						<% end %>
+					</li>
+					<li>
+						<b>입실시간</b>
+						<% if @info.checkintime.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.checkintime %></span>
+						<% end %>
+					</li>
+					<li>
+						<b>퇴실시간</b>
+						<% if @info.checkouttime.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.checkouttime %></span>
+						<% end %>
+					</li>
+					<li>
+						<b>픽업 서비스</b>
+						<% if @info.pickup.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.pickup %></span>
+						<% end %>
+					</li>
+					<li>
+						<b>예약안내</b>
+						<% if @info.reservation.to_s.empty?%>
+						  <span>정보가 없습니다.</span>
+						<% else %>
+						<span><%= @info.reservation %></span>
+						<% end %>
+					</li>
+				</ul>
+			</figcaption></p>
+            
+          </blockquote>
+
+   <!--       <hr>-->
+     
+			<!--<hr>-->
+			<!--<hr>-->
+
+          </div>
+    <% if user_signed_in? %>
+    <div>
+      <ul class="media-list" id = "reviews" style="float: left;margin-top: 50px;margin-bottom: 50px;">
+        <% @info.reviews.each do |review| %>
+          <%= render partial: "reviews/item", locals: {review: review} %>
+        <% end %>
+      </ul>
+    </div>			
+
+          <!-- Comments Form -->
+          <div class="card my-4" style="width: 100%;">
+            <h5 class="card-header">리뷰 남기기</h5>
+            <div class="card-body">
+             <img src = "<%= asset_path 'review_icon' %>" width= "60" height= "60" style= "float: left">
+        <%= form_for [@info, @info.reviews.new], :html => {:class => 'review_2'}, remote: true do |f| %>
+          <textarea name = "review[content]" id="review_content" cols="115" rows="2" style="width: 90%;" id="formaction_address"></textarea>
+          <!--<input type="submit" name="commit" value="Create Comment">-->
+          <input type="submit" name="commit" class = "btn_sub" value="제출하기" style = "float:right;">
+        <% end %>
+            </div>
+             </div>
+		<% end %>
+  </body>
+
+</html>

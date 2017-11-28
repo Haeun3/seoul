@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<title>꿈꾸는 서울</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="<%= asset_path 'favicon' %>" type="image/x-icon">
+		<link rel="icon" href="<%= asset_path 'favicon' %>" type="image/x-icon">
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
+    <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/animate.css">
+    <link rel="stylesheet" type="text/css" href="/app/assets/stylesheets/style.css">
+    
+    <!-- =======================================================
+        Theme Name: Laura
+        Theme URL: https://bootstrapmade.com/laura-free-creative-bootstrap-theme/
+        Author: BootstrapMade.com
+        Author URL: https://bootstrapmade.com
+    ======================================================= -->
+  </head>
+  
+
+
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="myFunction()">
+  
+      
+      
+      	<section id="slider">
+		<div id="home-carousel" class="carousel slide" data-ride="carousel">			
+			<div class="carousel-inner">
+				<div class="item active" style="background-image: url(<%= asset_path 'seoul_main1' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+							  <!--<h1>광화문 광장</h1>-->
+								<h2>광화문 광장</h2>
+								<p> (서울특별시 중구 세종대로 110)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'seoul_main2' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>반포대교</h2>
+								<p> (서울특별시 서초구 반포동)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'seoul_main3' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>동대문디자인플라자</h2>
+								<p> (서울특별시 중구 을지로 28)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'seoul_main4' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>남산서울타워</h2>
+								<p> (서울특별시 용산구 남산공원길 105)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<a class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+				<a class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+			</div>		
+		</div> <!--/#home-carousel--> 
+		<div class="container-fluid ">
+				<div class="row">
+					<div class="col-md-12 no-padding "  style="text-align: center;">
+							<div class="section-title st-center" ></div>
+							<img src="<%= asset_path 'title' %>" width="190" height="93"  style="margin-bottom: 70px;">
+						</div>
+						
+						
+						<div class="filter mb40">
+							<!-- #filter -->
+							
+						</div><!-- .filter .mb40 -->
+						
+						
+						
+						<!--------->
+						
+						
+						<div class="grid">
+							<% for i in 1..9 %>
+							<figure class="portfolio-item" data-groups='["photography"]'>
+								<img src="<%= @festival1['response']['body']['items']['item'][i]['firstimage'] %>" width="500" height="300" alt=""/>
+								<figcaption>
+									<h2  style="top : 70px;"><%= @festival1['response']['body']['items']['item'][i]['title'] %></h2>
+									<p style="top : 150px;"><%= @festival1['response']['body']['items']['item'][i]['addr1'] %></p><br>
+									<p  style="top : 180px;">기간 : <%= @festival1['response']['body']['items']['item'][i]['eventstartdate'] %>~<%= @festival1['response']['body']['items']['item'][i]['eventenddate'] %> </p>
+									<!--<a href="#" class="btn btn-main"><i class="fa fa-link"></i>더 알아보기</a>-->
+								</figcaption>
+							
+							</figure>
+						
+							<% end %>
+							<!--------->
+						</div>
+						
+					</div>
+				</div>
+			</div>
+    </section>
+    
+    
+  
+  
+  <!--<footer class="footer-2 text-center-xs bg--white">-->
+  <!--  <div class="container">-->
+      <!--end row-->
+  <!--    <div class="row">-->
+  <!--        <div class="col-md-6">-->
+  <!--            <div class="footer">-->
+  <!--                © Made by Minyoung & Haeun-->
+  <!--            </div>-->
+  <!--        </div>-->
+  <!--        <div class="col-md-6 text-right">-->
+  <!--            <ul class="social-list">-->
+  <!--                <li>-->
+  <!--                    <a href="#">-->
+  <!--                        <i class="fa fa-twitter"></i>-->
+  <!--                    </a>-->
+  <!--                </li>-->
+  <!--                <li>-->
+  <!--                    <a href="#">-->
+  <!--                        <i class="fa fa-dribbble"></i>-->
+  <!--                    </a>-->
+  <!--                </li>-->
+  <!--                <li>-->
+  <!--                    <a href="#">-->
+  <!--                        <i class="fa fa-vimeo"></i>-->
+  <!--                    </a>-->
+  <!--                </li>-->
+  <!--                <li>-->
+  <!--                    <a href="#">-->
+  <!--                        <i class="fa fa-instagram"></i>-->
+  <!--                    </a>-->
+  <!--                </li>-->
+  <!--            </ul>-->
+  <!--        </div>-->
+          
+  <!--    </div>-->
+      <!--end row-->
+  <!--  </div>-->
+  <!--</footer>-->
+  
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+    
+  </body>
+</html>

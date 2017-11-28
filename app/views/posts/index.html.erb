@@ -1,0 +1,113 @@
+<html>
+  <!DOCTYPE html>
+ <body style="
+    margin-left: 50px;
+    margin-right: 50px;
+">
+   <div class="container">
+    <div>
+      <h1 class="my-4"><img src="<%= asset_path 'chat' %>" width="300" height="65" alt=""  style="margin-top: 150px;"></h1>
+    </div>
+        <!-- /.col-lg-3 -->
+      
+        
+        
+        
+<h1 style="
+    margin-top: 50px;
+    text-align: center;
+    font-family: &quot;Jeju Gothic&quot;;
+    color: #080808;
+    font-size: 38px;
+    line-height: 60px;
+    font-weight: 700;
+    letter-spacing: 9px;
+">자유게시판</h1>
+
+    
+<!--목록 부분-->
+
+  <div class="filter mb40">
+		<form id="filter">
+		<fieldset class="group" style="margin-top: 30px;margin-bottom: 60px;">
+			<a href="index"><label class="btn btn-default btn-main"><input type="radio" name="filter" value="all" checked="checked" style="display: none;">자유게시판</label></a>
+			<a href="service1"><label class="btn btn-default"><input type="radio" name="filter" value="codding" style="display: none;">고객센터</label></a>
+		</fieldset>
+		</form><!-- #filter -->
+	</div><!-- .filter .mb40 -->
+
+<!--목록end-->
+
+<div class="table-responsive">
+<table class = "table table-striped">
+  <thead>
+  <tr>
+    <th>번호</th>
+    <th>제목</th>
+    <th>작성자</th>
+    <th>날짜</th>
+    <!--<th>조회수</th>-->
+  </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr> <!--값 입력시 저장--******임시-->
+      <td><%= post.id %></td>
+      <td><a href="/posts/show/<%= post.id %>"><%= post.title %></a></td>
+      <!--<td><a href="/posts/info_show/<%= post.id %>"><%= post.title %></a></td>-->
+      <td><%= post.user.nickname %></td>
+      <!--<td>2017.09.29</td>-->
+      <td><%= post.created_at.strftime("%Y. %m. %d") %></td>
+      <!--<td>2</td>-->
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+</table> 
+<hr/>
+</div>
+
+
+
+<!--글쓰기-->
+<a class="btn" btn-<a="" href="/posts/new" style="
+    float: right;
+    color: #323b45;
+    border-color: #323b45;
+    margin-bottom: 150px;
+">글쓰기</a>
+
+<div class ="text-center"> <!--페이지 번호-->
+  <ul class = "pagination" style="padding-left: 100px;">
+
+    
+    <%= will_paginate @posts, :previous_label => image_tag("arrow-left.png"), :next_label => image_tag("arrow-right.png"), :class=>"small-font", :style => "font-size: 20px"; %>
+  
+  </ul>
+</div>
+
+
+<div class="well" style="margin-top:50px;">
+<h4 class="margin-t-0">제목 검색</h4>
+<div class="input-group" style="width : 100%">
+  
+<%= form_tag search_posts_path, :method => :get do %>
+  <span class="input-group-btn">
+    <input type="text" style="width: 85%;height: 40px;" class="form-control" id="search-form" <%= text_field_tag :query, params[:query] %>
+  <button class="btn btn-default" type="button" style="padding-bottom: 3px;padding-top: 3px;width: 125px;border-top-right-radius: 0;border-bottom-right-radius: 0;margin-left:10px;">
+		<%= submit_tag("Search!", :style => "width:100px;margin-left: -17px;font-family: unset;" ) %>
+	</button>
+	</span>
+<% end %>
+</div>
+</div>
+
+
+
+<!--<%= form_tag search_posts_path, :method => :get do %>-->
+<!--  <%= text_field_tag :query, params[:query] %> -->
+  
+<!--  <%= submit_tag("Search!", :style => "width:100px; margin-left: -17px;" ) %>-->
+<!--<% end %>-->
+
+</html>

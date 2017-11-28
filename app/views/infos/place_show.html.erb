@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+
+          <h1 class="my-4"><img src="<%= asset_path 'place' %>" width="210" height="65" alt=""  style="margin-top: 150px;"></h1>
+         	
+					
+        </div>
+        <!-- /.col-lg-3 -->
+        
+        
+    <section id="slider">
+		<div id="home-carousel" class="carousel slide" data-ride="carousel">			
+			<div class="carousel-inner" >
+				<div class="item active" style="background-image: url(<%= asset_path 'place1' %>) ">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+							  <!--<h1>광화문 광장</h1>-->
+								<h2>동대문 쇼핑타운</h2>
+								<p> (서울 중구 장충단로 253)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'place2' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>명동</h2>
+								<p> (서울 중구 명동8길 27)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'place3' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>경복궁</h2>
+								<p> (서울 종로구 사직로 161)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+					<div class="item" style="background-image: url(<%= asset_path 'place4' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>N서울타워</h2>
+								<p> (서울 용산구 남산공원길 105)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+					<div class="item" style="background-image: url(<%= asset_path 'place5' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>인사동길</h2>
+								<p> (서울 종로구 인사동길 39-1)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+					<div class="item" style="background-image: url(<%= asset_path 'place6' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>남대문시장</h2>
+								<p> (서울 중구 남대문시장4길 21)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'place7' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>서울 한양도성</h2>
+								<p> (서울 종로구 율곡로 283)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+					<div class="item" style="background-image: url(<%= asset_path 'place8' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>동대문디자인플라자(DDP)</h2>
+								<p> (서울 중구 을지로 281)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+					<div class="item" style="background-image: url(<%= asset_path 'place9' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>홍대</h2>
+								<p> (서울 마포구 양화로 지하 188)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+					<div class="item" style="background-image: url(<%= asset_path 'place10' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>청계천</h2>
+								<p> (서울 종로구 무교로 37)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<a class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+				<a class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+			</div>		
+		</div> <!--/#home-carousel--> 
+		<div class="container-fluid ">
+			
+		
+          <div class="row">
+         <% @infos.each do |info| %>
+         <% if info.category == "place" %>
+            <div class="col-lg-4 col-md-6 mb-4" style="padding-top: 50px;">
+              <div class="card h-100">
+               
+                <a href="/infos/place_info_show/<%= info.id %>"><img class="card-img-top" src="<%= info.img %>" width="350" height="250" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#"><%= info.title %></a>
+                  </h4>
+                  <h5><%= info.addr %></h5>
+                </div>
+                <% if user_signed_in? %>
+                  <div class="card-footer">
+                    <!--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
+                    <!--<%= info.likes.size %> 명이 좋아합니다.-->
+                    <% if current_user.is_like?(info) %>
+                      <%= link_to image_tag("like2.gif" , :size => "150x40"), info_like_path(info), method: "post"  , data:{confirm: '즐겨찾기 해제되었습니다.'}%>
+                    <% else %>
+                      <%= link_to image_tag("unlike2.gif" , :size => "150x40"), info_like_path(info), method: "post" , data:{confirm: '즐겨찾기 추가되었습니다.'} %>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+        <% end %>
+
+
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+         <%= will_paginate @posts, :previous_label => image_tag("arrow-left.png"), :next_label => image_tag("arrow-right.png"), :class=>"small-font", :style => "font-size: 20px; text-align: center; margin-top: 50px; "; %>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,5 @@
+(function($){
+    $("#review_content").val("")
+    var html = "<%= escape_javascript(render(partial: 'reviews/item', locals: {review: @review})) %>";
+    $("#reviews").append(html);
+})(jQuery)

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  
+    	<!--위에 메뉴바-->
+
+     
+        <header id="main-header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#lauraMenu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+             <a class="navbar-brand" href="/home/index" style="margin-top: -10px;"><img src="<%= asset_path 'dream' %>" width="150" height="50"></a><img src="<%= asset_path 'seoul_dal' %>" width="60" height="65" alt="">
+            </div>
+            <div class="collapse navbar-collapse" id="lauraMenu">
+              <ul class="nav navbar-nav navbar-right navbar-border">
+                <li><a href="/home/index">홈</a></li>
+                <li><a href="/infos/place_show">장소</a></li>
+                <li><a href="/infos/food_show">식당</a></li>
+                <li><a href="/infos/sleep_show">숙박</a></li>
+                <li><a href="/posts/index">커뮤니티</a></a></li>
+                <li><a href="/home/mypage">마이페이지</a></li>
+                <% if user_signed_in? %>
+                  <li style="font-size: 12px;margin-top: 25px;margin-left: 30px;color: antiquewhite;"><%=current_user.nickname %>님 환영합니다.</li>
+                  <li><a href="/users/sign_out" data-method="delete" style="font-size: 12px;margin-right: -20px;">로그아웃</a></li>
+                <% else %>
+                  <li><a href="/users/sign_in" style="font-size: 12px;margin-right: -20px;">로그인</a></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        </header>
+        <div class="wrapper">
+        </div>
+   
+          <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--<title>Shop Homepage - Start Bootstrap Template</title>-->
+
+    <!-- Bootstrap core CSS -->
+    <link href="/app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+    
+    
+</head>
+   
+<body>
+
+<%= yield %>
+
+</body>
+
+<!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white" style="margin-top: 50px";>© Made by Minyoung & Haeun</p></p>
+      </div>
+      <!-- /.container -->
+    </footer>
+</html>

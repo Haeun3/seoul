@@ -1,0 +1,149 @@
+<!--<div style="margin-top:100px;margin-left:50px">-->
+<!--<h1><%= @post.id %>번 post를 수정할 화면입니다.</h1>-->
+
+
+<html>
+    <style>
+        
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px 16px;
+}
+  
+.btn-lg {
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+/***********************
+  GRADIENT BUTTONS
+************************/
+.btn-primary.gradient {
+    background: -moz-linear-gradient(top,  #33a6cc 50%, #0099cc 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#33a6cc), color-stop(50%,#0099cc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #33a6cc 50%,#0099cc 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33a6cc', endColorstr='#0099cc',GradientType=0 ); /* IE6-9 */
+}
+.btn-primary.gradient:hover, .btn-primary.gradient:focus, .btn-primary.gradient:active, .btn-primary.gradient.active, .open > .dropdown-toggle.btn-primary {
+    background: -moz-linear-gradient(top,  #66b2cc 50%, #33a6cc 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#66b2cc), color-stop(50%,#33a6cc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #66b2cc 50%,#33a6cc 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66b2cc', endColorstr='#33a6cc',GradientType=0 ); /* IE6-9 */
+}
+.btn-primary.gradient:active, .btn-primary.gradient.active {
+    background: -moz-linear-gradient(top,  #267c99 50%, #007299 50%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#267c99), color-stop(50%,#007299)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #267c99 50%,#007299 50%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #267c99 50%,#007299 50%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #267c99 50%,#007299 50%); /* IE10+ */
+    background: linear-gradient(to bottom,  #267c99 50%,#007299 50%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267c99', endColorstr='#007299',GradientType=0 ); /* IE6-9 */
+}
+
+/***********************
+  CUSTON BTN VALUES
+************************/
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+    </style>
+
+<body style="
+    margin-left: 150px;
+    margin-right : 150px;
+    margin-top: 250px;
+    margin-bottom: 150px;
+">
+<!--<h1>새로운 post를 입력할 화면입니다.</h1>-->
+    <div >
+      <h1 class="my-4"><img src="<%= asset_path 'chat' %>" width="300" height="65" alt="" style="margin-top: -80px;margin-bottom: 100px;"></h1>
+   </div>
+<%= form_tag update_post_path(@post.id), method: 'post' do%>
+   <p style="
+    text-align: center;
+">
+        <!--name,vale,style-->
+        <%= text_field_tag 'input_title',@post.title,style: "width:73%" %>
+    </p>
+    <p style="
+    text-align: center;
+">
+        <%= text_area_tag 'input_content',@post.content,style: "width:73%", rows: 20 %>
+    </p>
+    <!--<%= submit_tag "submit" %>-->
+ <%= submit_tag("작성하기", :class => "btn btn-primary btn-lg gradient", :style => "margin-left:74%;" ) %>
+<% end %>
+
+<!--<div>-->
+<!--<%= form_tag update_post_path(@post.id), method: 'post' do%>-->
+<!--    <p>-->
+        <!--name,vale,style-->
+<!--        <%= text_field_tag 'input_title',@post.title,style: "width:33%" %>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        <%= text_area_tag 'input_content',@post.content,style: "width:33%", rows: 20 %>-->
+<!--    </p>-->
+    
+<!--    <%= submit_tag 'Submit!' %>-->
+<!--<% end %>-->
+<!--</div>-->
+</html>

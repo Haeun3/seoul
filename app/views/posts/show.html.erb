@@ -1,0 +1,87 @@
+ <html>
+    <div >
+      <h1 class="my-4"><img src="<%= asset_path 'chat' %>" width="300" height="65" alt="" style="margin-top: -80px;margin-bottom: 100px;"></h1>
+   </div>
+     
+
+<body style="
+    margin-left: 150px;
+    margin-right : 150px;
+    margin-top: 250px;
+">
+
+<h1 style="
+    font-size: 13px;
+    margin-bottom: -35px;
+    margin-left: 15px;
+";
+">글 번호 : <%= @post.id %> </h1>
+<h1 style="
+    font-size: 13px;
+    margin-bottom: -15px;
+    margin-right: 15px;
+    text-align: right;
+";
+">작성일 : <%= @post.created_at.strftime("%Y. %m. %d") %></h1>
+<hr style="border: solid 0.8px #3a434c;">
+
+<h2 style="
+    font-size: 17px;
+    margin-bottom: -10px;
+    margin-top: -10px;
+    margin-left: 15px;
+">제목 : <%= @post.title %> </h2>
+<h2 style="
+    font-size: 17px;
+    margin-bottom: -10px;
+    margin-top: -20px;
+    margin-right: 15px;
+    text-align: right;
+"> 글쓴이 : <%= @post.user.nickname %></h2>
+<hr style="border: solid 0.8px rgba(56, 56, 56, 0.47);">
+
+<p style="
+    font-size: 20px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    "
+><%= @post.content %></p>
+<hr style="border: solid 0.8px #3a434c;">
+
+
+<div>
+      <ul class="media-list" id = "comments" style="float: left;margin-bottom: 20px;">
+        <% @post.comments.each do |comment| %>
+          <%= render partial: "comments/item", locals: {comment: comment} %>
+        <% end %>
+      </ul>
+</div>	
+
+ <!-- Comments Form -->
+  <div class="card my-4" style="width: 100%; height: 130px;">
+    <h5 class="card-header">댓글 남기기</h5>
+    <div class="card-body">
+     <img src = "<%= asset_path 'review_icon' %>" width= "60" height= "60" style= "float: left">
+<%= form_for [@post, @post.comments.new], :html => {:class => 'review_2'}, remote: true do |f| %>
+  <textarea name = "comment[content]" id="comment_content" cols="115" rows="2" style="width: 90%;" id="formaction_address"></textarea>
+  <!--<input type="submit" name="commit" value="Create Comment">-->
+  <input type="submit" name="commit" class = "btn_sub" value="제출하기" style = "float:right;">
+<% end %>
+    </div>    
+
+
+
+ <div class="filter mb40" style="
+    margin-top: 50px;
+    margin-bottom: 150px
+">
+ 
+<label class="btn btn-default " style="background-color: #f2f3eb;"><%= link_to '목록으로',posts_index_path %></label>
+<label class="btn btn-default " style="background-color: #f2f3eb;"><%= link_to '수정하기',edit_post_path(@post.id) %></label>
+<label class="btn btn-default" style="background-color: #f2f3eb;"><%= link_to '삭제하기',delete_post_path(@post.id), method: 'delete',data: {confirm:"정말 삭제하실겁니까?"} %></label>
+<!-- <label class="btn btn-default" style="background-color: #f2f3eb;><%= link_to "Back", :back %></label>	-->				
+</div><!-- .filter .mb40 -->
+						
+</body>
+</html>

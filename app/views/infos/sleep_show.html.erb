@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+ 
+   
+
+  <body>
+      
+      
+
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+
+          <h1 class="my-4"><img src="<%= asset_path 'sleep' %>" width="210" height="65" alt=""  style="margin-top: 150px;"></h1>
+         	
+					
+        </div>
+        <!-- /.col-lg-3 -->
+        
+        
+    <section id="slider">
+		<div id="home-carousel" class="carousel slide" data-ride="carousel">			
+			<div class="carousel-inner" >
+				<div class="item active" style="background-image: url(<%= asset_path 'sleep1' %>) ">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+							  <!--<h1>광화문 광장</h1>-->
+								<h2 style="font-size: 50px;">보넘 1957 한옥 스테이</h2>
+								<p> (서울특별시 종로구 북촌로 53)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep2' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>호텔 엔트라</h2>
+								<p> (서울특별시 강남구 도산대로 508)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep3' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>서울 신라 호텔</h2>
+								<p> (서울특별시 중구 동호로 249)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep4' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>솔라리아 니시테츠 호텔 서울</h2>
+								<p> (서울특별시 중구 명동8길 27)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep5' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>포시즌스 호텔 서울</h2>
+								<p> (서울특별시 종로구 새문안로 97)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep6' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>호텔 이노 스테이</h2>
+								<p> (서울특별시 성동구 천호대로 302)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep7' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>코트야드 메리어트 서울</h2>
+								<p> (서울특별시 중구 남대문로 9)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep8' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>콘래드 서울 호텔</h2>
+								<p> (서울특별시 영등포구 국제금융로 10)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep9' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2 style="font-size: 38px;">그랜드 인터컨티넨탈 서울 파르나스</h2>
+								<p> (서울특별시 강남구 테헤란로 521)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<div class="item" style="background-image: url(<%= asset_path 'sleep10' %>)">
+					<div class="carousel-caption container">
+						<div class="row">
+							<div class="col-sm-7">
+								<h2>웨스틴 조선 호텔 서울</h2>
+								<p> (서울특별시 중구 소공로 106)</p>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<a class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+				<a class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+			</div>		
+		</div> <!--/#home-carousel--> 
+		<div class="container-fluid ">
+			
+		
+          <div class="row">
+         <% @infos.each do |info| %>
+          <% if info.category == "sleep" %>
+            <div class="col-lg-4 col-md-6 mb-4" style="padding-top: 50px;">
+              <div class="card h-100">
+               
+                <a href="/infos/sleep_info_show/<%= info.id %>"><img class="card-img-top" src="<%= info.img %>" width="350" height="250" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#"><%= info.title %></a>
+                  </h4>
+                  <h5><%= info.addr %></h5>
+                </div>
+                <% if user_signed_in? %>
+                  <div class="card-footer">
+                    <!--<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>-->
+                    <!--<%= info.likes.size %> 명이 좋아합니다.-->
+                    <% if current_user.is_like?(info) %>
+                      <%= link_to image_tag("like2.gif" , :size => "150x40"), info_like_path(info), method: "post" , data:{confirm: '즐겨찾기 해제되었습니다.'} %>
+                    <% else %>
+                      <%= link_to image_tag("unlike2.gif" , :size => "150x40"), info_like_path(info), method: "post"  , data:{confirm: '즐겨찾기 추가되었습니다.'}%>
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+         <%= will_paginate @posts, :previous_label => image_tag("arrow-left.png"), :next_label => image_tag("arrow-right.png"), :class=>"small-font", :style => "font-size: 20px; text-align: center; margin-top: 50px;"; %>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
